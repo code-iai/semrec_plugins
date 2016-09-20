@@ -15,53 +15,22 @@ endif()
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES sr_plugin_gazebo sr_plugin_console sr_plugin_experiment_context sr_plugin_interactive sr_plugin_supervisor sr_plugin_dotexporter
-  CATKIN_DEPENDS roscpp roslib designator_integration_cpp designator_integration_msgs sensor_msgs cv_bridge interactive_markers visualization_msgs semrec
-)
+  LIBRARIES
+  CATKIN_DEPENDS roscpp roslib designator_integration_cpp designator_integration_msgs sensor_msgs cv_bridge interactive_markers visualization_msgs semrec)
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
   include)
 
+set(PLUGINS_SOURCE_DIRECTORY "${PROJECT_SOURCE_DIR}/src/plugins/")
 
-add_library(sr_plugin_gazebo SHARED
-  src/gazebo/PluginGazebo.cpp)
+add_semrec_plugin(gazebo)
+add_semrec_plugin(console)
+add_semrec_plugin(experiment_context)
+add_semrec_plugin(interactive)
+add_semrec_plugin(supervisor)
+add_semrec_plugin(imagecapturer)
 
-add_library(sr_plugin_console SHARED
-  src/console/PluginConsole.cpp)
-
-add_library(sr_plugin_experiment_context SHARED
-  src/experiment-context/PluginExperimentContext.cpp)
-
-add_library(sr_plugin_interactive SHARED
-  src/interactive/PluginInteractive.cpp
-  src/interactive/InteractiveObject.cpp)
-
-add_library(sr_plugin_supervisor SHARED
-  src/supervisor/PluginSupervisor.cpp)
-
-add_library(sr_plugin_imagecapturer SHARED
-  src/imagecapturer/CImageCapturer.cpp
-  src/imagecapturer/PluginImageCapturer.cpp)
-
-target_link_libraries(sr_plugin_gazebo
-  sr_base_plugin)
-
-target_link_libraries(sr_plugin_console
-  sr_base_plugin
-  ncurses)
-
-target_link_libraries(sr_plugin_experiment_context
-  sr_exporter_plugin)
-
-target_link_libraries(sr_plugin_interactive
-  sr_base_plugin)
-
-target_link_libraries(sr_plugin_imagecapturer
-  sr_base_plugin)
-
-target_link_libraries(sr_plugin_supervisor
-  sr_base_plugin)
 
 install(TARGETS sr_plugin_gazebo sr_plugin_console sr_plugin_experiment_context sr_plugin_interactive sr_plugin_imagecapturer sr_plugin_supervisor
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
