@@ -1,4 +1,4 @@
-sudo: required
+[6~sudo: required
 dist: trusty
 
 language: cpp
@@ -42,7 +42,7 @@ before_install:
 
 script:
  - cd ~/catkin_ws/src
- - wstool set semrec --git https://github.com/code-iai/semrec_plugins -y
+ - wstool set semrec_plugins --git https://github.com/code-iai/semrec_plugins -y
  - wstool update semrec_plugins
  - cd ~/catkin_ws
  - catkin_make --pkg semrec_plugins -j1
