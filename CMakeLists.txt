@@ -22,7 +22,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   include)
 
-set(PLUGINS_SOURCE_DIRECTORY "${PROJECT_SOURCE_DIR}/src/plugins/")
+set(PLUGINS_SOURCE_DIRECTORY "${PROJECT_SOURCE_DIR}/src/")
 
 add_semrec_plugin(gazebo)
 add_semrec_plugin(console)
