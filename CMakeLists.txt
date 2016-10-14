@@ -31,6 +31,13 @@ add_semrec_plugin(interactive)
 add_semrec_plugin(supervisor)
 add_semrec_plugin(imagecapturer)
 
+target_link_libraries(sr_plugin_gazebo ${catkin_LIBRARIES})
+target_link_libraries(sr_plugin_console ${catkin_LIBRARIES})
+target_link_libraries(sr_plugin_experiment_context ${catkin_LIBRARIES})
+target_link_libraries(sr_plugin_interactive ${catkin_LIBRARIES})
+target_link_libraries(sr_plugin_supervisor ${catkin_LIBRARIES})
+target_link_libraries(sr_plugin_imagecapturer ${catkin_LIBRARIES})
+
 
 install(TARGETS sr_plugin_gazebo sr_plugin_console sr_plugin_experiment_context sr_plugin_interactive sr_plugin_imagecapturer sr_plugin_supervisor
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
